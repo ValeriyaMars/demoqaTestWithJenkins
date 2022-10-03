@@ -18,8 +18,8 @@ public class PracticeFormTestsWithRandomUtilsTests extends tests.TestBase {
     void fillPracticeForm() {
         open("https://demoqa.com/automation-practice-form");
 
-        $("#firstName").setValue(firstName);
-        $("#lastName").setValue(lastName);
+        $("#firstName").setValue(studentFirstName);
+        $("#lastName").setValue(studentLastName);
         $("#userEmail").setValue(studentEmail);
         $(byText("Female")).click();
         $("#userNumber").setValue(studentNumber);
@@ -37,7 +37,7 @@ public class PracticeFormTestsWithRandomUtilsTests extends tests.TestBase {
         $("#stateCity-wrapper").$(byText("Delhi")).click();
         $("#submit").scrollTo().click();
 
-        $(".modal-body").shouldHave(text("Student Name " + firstName + " " + lastName));
+        $(".modal-body").shouldHave(text("Student Name " + studentFirstName + " " + studentLastName));
         $(".modal-body").shouldHave(text("Student Email " + studentEmail));
         $(".modal-body").shouldHave(text("Gender Female"));
         $(".modal-body").shouldHave(text("Mobile " + studentNumber));
