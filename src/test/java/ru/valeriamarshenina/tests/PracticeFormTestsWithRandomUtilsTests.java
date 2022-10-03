@@ -30,7 +30,7 @@ public class PracticeFormTestsWithRandomUtilsTests extends tests.TestBase {
         $("#subjectsInput").setValue("Maths").pressEnter();
         $(byText("Reading")).click();
         $("input#uploadPicture").uploadFromClasspath("img/1.png");
-        $("#currentAddress").setValue(studentCurrentAddress);
+        $("#currentAddress").scrollTo().setValue(studentCurrentAddress);
         $("#state").click();
         $("#stateCity-wrapper").$(byText("NCR")).click();
         $("#city").click();
