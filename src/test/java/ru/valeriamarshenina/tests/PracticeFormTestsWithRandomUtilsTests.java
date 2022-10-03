@@ -9,14 +9,14 @@ import static com.codeborne.selenide.Selenide.$;
 import static ru.valeriamarshenina.tests.TestData.*;
 import static ru.valeriamarshenina.utils.RandomUtils.getRandomString;
 
-public class PracticeFormTestsWithRandomUtilsTests {
+public class PracticeFormTestsWithRandomUtilsTests extends tests.TestBase {
 
     String firstName = getRandomString(10),
             lastName = getRandomString(10);
 
     @Test
     void fillPracticeForm() {
-        open("/automation-practice-form");
+        open("https://demoqa.com/automation-practice-form");
 
         $("#firstName").setValue(firstName);
         $("#lastName").setValue(lastName);
@@ -35,9 +35,9 @@ public class PracticeFormTestsWithRandomUtilsTests {
         $("#stateCity-wrapper").$(byText("NCR")).click();
         $("#city").click();
         $("#stateCity-wrapper").$(byText("Delhi")).click();
-        $("#submit").click();
+        $("#submit").scrollTo().click();
 
-        $(".modal-body").shouldHave(text("Student Name " + studentFirstName + " " + studentLastName));
+        $(".modal-body").shouldHave(text("Student Name " + firstName + " " + lastName));
         $(".modal-body").shouldHave(text("Student Email " + studentEmail));
         $(".modal-body").shouldHave(text("Gender Female"));
         $(".modal-body").shouldHave(text("Mobile " + studentNumber));
