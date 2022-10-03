@@ -7,12 +7,8 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.$;
 import static ru.valeriamarshenina.tests.TestData.*;
-import static ru.valeriamarshenina.utils.RandomUtils.getRandomString;
 
-public class PracticeFormTestsWithRandomUtilsTests extends tests.TestBase {
-
-    String firstName = getRandomString(10),
-            lastName = getRandomString(10);
+public class PracticeFormTests extends tests.TestBase {
 
     @Test
     void fillPracticeForm() {
