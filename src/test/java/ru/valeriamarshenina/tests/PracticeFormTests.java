@@ -2,18 +2,14 @@ package ru.valeriamarshenina.tests;
 
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import ru.valeriamarshenina.tests.properties.SystemPropertiesTests;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Selenide.$;
 import static java.lang.String.format;
 import static ru.valeriamarshenina.tests.TestData.*;
 
 public class PracticeFormTests extends tests.TestBase {
-    String url = System.getProperty("url");
-    String sourceUrl = format("https://demoqa.com/%s", url);
 
     @Test
     @Tag("allInputs")
@@ -22,6 +18,8 @@ public class PracticeFormTests extends tests.TestBase {
         System.setProperty("version", "91");
         System.setProperty("browserSize", "500x500");
         System.setProperty("url","automation-practice-form");
+        String url = System.getProperty("url");
+        String sourceUrl = format("https://demoqa.com/%s", url);
 
         open(sourceUrl);
         $("#firstName").setValue(studentFirstName);
@@ -58,10 +56,13 @@ public class PracticeFormTests extends tests.TestBase {
     @Test
     @Tag("withoutNotRequiredInputs")
     void fillPracticeFormMaleWithoutEmail() {
+
         System.setProperty("browser", "chrome");
         System.setProperty("version", "91");
         System.setProperty("browserSize", "500x500");
         System.setProperty("url","automation-practice-form");
+        String url = System.getProperty("url");
+        String sourceUrl = format("https://demoqa.com/%s", url);
 
         open(sourceUrl);
         $("#firstName").setValue(studentFirstName);
@@ -101,6 +102,8 @@ public class PracticeFormTests extends tests.TestBase {
         System.setProperty("version", "91");
         System.setProperty("browserSize", "500x500");
         System.setProperty("url","automation-practice-form");
+        String url = System.getProperty("url");
+        String sourceUrl = format("https://demoqa.com/%s", url);
 
         open(sourceUrl);
         $("#firstName").setValue(studentFirstName);
@@ -140,6 +143,8 @@ public class PracticeFormTests extends tests.TestBase {
         System.setProperty("version", "91");
         System.setProperty("browserSize", "500x500");
         System.setProperty("url","automation-practice-form");
+        String url = System.getProperty("url");
+        String sourceUrl = format("https://demoqa.com/%s", url);
 
         open(sourceUrl);
         $("#firstName").setValue(studentFirstName);
