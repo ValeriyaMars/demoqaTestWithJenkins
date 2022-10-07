@@ -3,23 +3,39 @@ package tests;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
+import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import ru.valeriamarshenina.config.CredentialsConfig;
 import ru.valeriamarshenina.helpers.Attach;
+
+import static java.lang.String.format;
 
 
 public class TestBase {
-    @BeforeAll
-    static void setup() {
+
+    public CredentialsConfig credentials =
+            ConfigFactory.create(CredentialsConfig.class);
+
+    String login = credentials.login();
+    String password = credentials.password();
+
+    @BeforeEach
+    void setup() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);
 
+        System.setProperty("url", "selenoid.autotests.cloud/wd/hub/");
+        String selenoidUrl = System.getProperty("url");
+        String browserUrl = format("https://%s:%s%s", login, password, selenoidUrl);
+
         Configuration.browserCapabilities = capabilities;
         Configuration.startMaximized = true;
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub/";
+        Configuration.remote = browserUrl;
     }
 
     @AfterEach
