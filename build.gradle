@@ -57,7 +57,13 @@ task properties_test(type: Test) {
     }
 }
 
-    task properties_test1(type: Test) {
+task properties_test1(type: Test) {
+    useJUnitPlatform {
+        includeTags "allInputsWithSteps"
+    }
+}
+
+    task properties_test2(type: Test) {
         useJUnitPlatform {
             includeTags "withoutNotRequiredInputs"
         }

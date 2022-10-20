@@ -29,8 +29,7 @@ public class TestBase {
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);
 
-        System.setProperty("url", "selenoid.autotests.cloud/wd/hub/");
-        String selenoidUrl = System.getProperty("url");
+        String selenoidUrl = System.getProperty("url", "selenoid.autotests.cloud/wd/hub/");
         String browserUrl = format("https://%s:%s%s", login, password, selenoidUrl);
 
         Configuration.browserCapabilities = capabilities;
